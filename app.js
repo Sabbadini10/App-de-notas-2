@@ -67,8 +67,3 @@ switch (accion) {
 }
 
 
-/* let escribirTarea = {
-    id: tareas[tareas.length - 1].id +1,
-    titulo,
-    estado,
-  } tareas.push(escribirTarea);*/
