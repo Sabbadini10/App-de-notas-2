@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const process = require('process');
-const { leerJSON, escribirJSON} = require('./tareas');
+const { leerJSON, escribirJSON, filtrarPorEstado, crearTarea, guardarTarea, leerPorEstado} = require('./tareas');
 
 let tareas = JSON.parse(fs.readFileSync('./tareas.json', 'utf-8'));
 
@@ -9,25 +9,25 @@ const accion = process.argv[2];
 
 const titulo = process.argv[3];
 
-const estado = process.argv[4];
+const estado = process.argv[4]
 
 
 switch (accion) {
-    case 'leer JSON':
+    case 'listar':
     leerJSON()
     break;
     case 'escribir json':
-          escribirJSON()
+          escribirJSON(titulo, estado)
         break;
     case 'guardar el archivo actualizado':
-        console.log(tareas)
+        guardarTarea()
+    console.log(tareas)
         console.log(`
                      ===================================
-                     El Archivo se actualizado con exito   
+                       El Archivo se guardado con exito   
                      ===================================`); 
         break;
     case 'eliminar':
-        eliminarTareas
         tareas = JSON.parse(fs.readFileSync('./tareas.json', 'utf-8'));
         let eliminado = tareas.pop({
             id: id,
@@ -43,13 +43,17 @@ switch (accion) {
         console.log(`La tareas eliminada es : ${eliminado.id}, ${eliminado.titulo}, ${eliminado.estado}`)
         break;
         case 'filtrar':
-            filtrarPorEstado();
             console.log(`
             =====================================
-            = Su tarea se filtro correctamente =
+            = Su estado se filtro correctamente =
             =====================================
             `)
+            filtrarPorEstado(estado);
             break;
+            case 'crear':
+                crearTarea(titulo)
+               break;
+
     case "undefined": console.log(`
        ==============================================================
        =  Atencion - Tienes que pasar una accion.                   =
@@ -65,5 +69,3 @@ switch (accion) {
     `)
         break;
 }
-
-
