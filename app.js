@@ -69,3 +69,5 @@ switch (accion) {
     `)
         break;
 }
+
+console.log(hola);
