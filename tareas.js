@@ -29,15 +29,29 @@ let funcionesDeTarea = {
 
   },
   leerPorEstado: function (estado) {
+    if(tareas.estado !== estado){
+      console.log(`
+      ============================================
+      No se encontro ninguna tarea con ese estado
+      ============================================
+      `)
+     }
     tareas.forEach(tareas => {
       if (tareas.estado === estado) {
         console.log(`-(${tareas.id}) == ${tareas.titulo} == ${tareas.estado}`)
       }
+      
     })
   },
   filtrarPorEstado: function (estado) {
-    let tareasFiltradas =  this.leerPorEstado(estado);
-    return tareasFiltradas.filter(tareas => tareas.estado === estado);
+    let filtrados= tareas.filter(tareas => tareas.estado === estado);
+    filtrados.forEach(tareas => {
+      console.log(`
+      ===================================================
+         (${tareas.id})_ Titulo: ${tareas.titulo} ---- Estado: ${tareas.estado}
+      ===================================================
+      `);
+  })
   },
 
   crearTarea: function (titulo) {
@@ -54,9 +68,41 @@ let funcionesDeTarea = {
   = Su tarea se creo correctamente  =
   =====================================
    `)
+  },
+  eliminarTarea: function (titulo, estado, id) {
+    tareas = JSON.parse(fs.readFileSync('./tareas.json', 'utf-8'));
+        let eliminado = tareas.pop({
+            id: id,
+            titulo: titulo,
+            estado: estado,
+        })
+        fs.writeFileSync('./tareas.json', JSON.stringify(tareas, null, 3))
+        console.log(`
+        =====================================
+        = Su tarea se elimino correctamente =
+        =====================================
+      `)
+        console.log(`La tareas eliminada es : ${eliminado.id}, ${eliminado.titulo}, ${eliminado.estado}`)
+  },
+  comandos: setTimeout(function () {
+    console.log(`
+    =====================================
+    ========== COMANDOS ===============
+    =====================================
+    = 1. listar ===============
+    = 2. escribir ===============
+    = 3. guardar ===============
+    = 4. leer ===============
+    = 5. filtrar ===============
+    = 6. crear ===============
+    = 7. eliminar ===============
+    =====================================
+    `)}, 1000)
+
   }
 
-}
+
+
 
 
 
