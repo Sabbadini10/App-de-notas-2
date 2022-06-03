@@ -15,7 +15,7 @@ const estado = process.argv[4]
 switch (accion) {
     case 'listar':
     leerJSON()
-    break;
+        break;
     case 'escribir json':
           escribirJSON(titulo, estado)
         break;
@@ -42,17 +42,17 @@ switch (accion) {
       `)
         console.log(`La tareas eliminada es : ${eliminado.id}, ${eliminado.titulo}, ${eliminado.estado}`)
         break;
-        case 'filtrar':
-            console.log(`
-            =====================================
-            = Su estado se filtro correctamente =
-            =====================================
-            `)
-            filtrarPorEstado(estado);
+    case 'filtrar':
+        console.log(`
+        =====================================
+        = Su estado se filtro correctamente =
+        =====================================
+        `)
+        filtrarPorEstado(estado);
             break;
-            case 'crear':
-                crearTarea(titulo)
-               break;
+    case 'crear':
+        crearTarea(titulo)
+            break;
 
     case "undefined": console.log(`
        ==============================================================
@@ -69,6 +69,3 @@ switch (accion) {
     `)
         break;
 }
-
-console.log(hola);
-console.log("console log dentro de la rama secundaria.");
