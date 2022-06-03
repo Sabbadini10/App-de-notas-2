@@ -71,3 +71,4 @@ switch (accion) {
 }
 
 console.log(hola);
+console.log("console log dentro de la rama secundaria.");
