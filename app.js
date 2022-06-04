@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const process = require('process');
 const { leerJSON, escribirJSON, filtrarPorEstado, crearTarea, guardarTarea, leerPorEstado, eliminarTarea } = require('./tareas');
 
@@ -16,6 +15,7 @@ const estado = process.argv[4]
 switch (accion) {
     case 'listar':
         leerJSON()
+
         break;
     case 'escribir':
         escribirJSON(titulo, estado)
